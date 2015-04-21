@@ -53,6 +53,6 @@ int main()
     e.push_front(3);
     e.push_front(4);
     e.push_front(6);
-    printLots(d, e);
+    //printLots(d, e);
     return 0;
 }
