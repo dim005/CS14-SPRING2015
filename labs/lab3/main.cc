@@ -7,7 +7,9 @@
 
 using namespace std;
 
+#include "lab3.h"
+
 int main()
 {
-    
+       
 }
