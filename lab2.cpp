@@ -68,18 +68,18 @@ using namespace std;
 
 //--------------------------------------------------
 
-//template <typename T>
-//void printLots(forward_list <T> L, forward_list <int> P)
-//{
-//    int counter = 1;
-//    while(P.empty()!=true||L.empty()!=true)
-//    {
-//        if(P.front()==counter)
-//       {
-//           cout << L.front();
-//            P.pop_front();
-//        }
-//        counter++;
-//        L.pop_front();
-//    }
-//}
+template <typename T>
+void printLots(forward_list <T> L, forward_list <int> P)
+{
+    int counter = 1;
+    while(L.empty()!=true)
+    {
+        if(P.front()==counter)
+        {
+            cout << L.front();
+            P.pop_front();
+        }
+        counter++;
+        L.pop_front();
+    }
+}
