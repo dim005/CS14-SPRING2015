@@ -9,8 +9,8 @@
 
 using namespace std;
 
-#include "lab2.h"
 #include "lab2.cpp"
+#include "lab2.h"
 
 int main()
 {
@@ -27,18 +27,18 @@ int main()
     a.display();
     
     forward_list<char> b;
-    b.push_front('h');
-    b.push_front('e');
-    b.push_front('l');
-    b.push_front('l');
-    b.push_front('o');
     forward_list<char> c;
-    b.push_front('d');
-    b.push_front('l');
-    b.push_front('r');
-    b.push_front('o');
+    c.push_front('o');
+    c.push_front('l');
+    c.push_front('l');
+    c.push_front('e');
+    c.push_front('h');
     b.push_front('w');
-//    listCopy(b, c);
+    b.push_front('o');
+    b.push_front('r');
+    b.push_front('l');
+    b.push_front('d');
+    listCopy(b, c);
 
     forward_list<int> d;
     d.push_front(6);
@@ -48,11 +48,13 @@ int main()
     d.push_front(2);
     d.push_front(1);
     forward_list<int> e;
-    e.push_front(1);
-    //e.push_front(2);
-    e.push_front(3);
-    e.push_front(4);
     e.push_front(6);
-    //printLots(d, e);
+    //e.push_front(2);
+    e.push_front(4);
+    e.push_front(3);
+    e.push_front(1);
+    printLots(d, e);
+    
+    //primeCount(d);
     return 0;
 }

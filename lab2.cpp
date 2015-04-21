@@ -11,60 +11,47 @@ using namespace std;
 
 //--------------------------------------------------
 
-//int primeCount(forward_list<int> lst)
-//{
-//    int prime_total = 0;
-////    while(lst.front()!=0)
-////    {
-////        if(isPrime(lst.front()))
-////        {
-////            prime_total++;
-////        }
-////        lst.pop_front();
-////        return primeCount(lst);
-////    }
-//    return prime_total;
-//}
+// bool isPrime(int i)
+// {
+//     for(int k = 2; k < i; k++)
+//     {
+//         if(i%k ==0)
+//         {
+//             return false;
+//         }
+//     }
+//     return true;
+// }
 
-//bool isPrime(int i)
-//{
-////    int HalfValue = i/2;
-////    //int DivisibleNumArray[HalfValue];
-////    array<int, HalfValue> DivisibleNum;
-////    int k = 0;
-////    
-////    while(HalfValue!=0)
-////    {
-////        if(i%HalfValue==0)
-////        {
-////            DivisibleNum[k] = i%HalfValue;
-////            k++;
-////        }
-////        HalfValue--;
-////    }
-////    if(DivisibleNum.size()>1)
-////    {
-////        return false;
-////    }
-////    else
-////    {
-////        return true;
-////    }
-//    return true;
-//}
+// int primeCount(forward_list<int> lst)
+// {
+//     if(lst.empty()==true)
+//     {
+//         return 0;
+//     }
+//     else if(isPrime(lst.front()))
+//     {
+//         lst.pop_front();
+//         return primeCount(lst);
+//     }
+//     return primeCount(lst);
+// }
+
 
 //--------------------------------------------------
 
-//template <typename T>
-//void listCopy(forward_list<T> L, forward_list<T>& P)
-//{
-//    forward_list<T> tempCopy = L;
-//    while(!tempCopy.empty())
-//    {
-//        P.insert_after();
-//        tempCopy.pop_front();
-//    }
-//}
+template <typename T>
+void listCopy(forward_list<T> L, forward_list<T>& P)
+{
+    P.reverse();
+    L.reverse();
+    while(L.empty()!=true)
+    {
+        P.push_front(L.front());
+        L.pop_front();
+    }
+    P.reverse();
+}
 
 //--------------------------------------------------
 
