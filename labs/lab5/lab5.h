@@ -35,7 +35,7 @@ class BST {
         Value value;
         bool selected;
         Node(const Value v = Value() )
-        : value(v), left(nil), right(nil), selected(false)
+        :  left(nil), right(nil), value(v), selected(false)
         { }
         Value& content() {return value;}
         bool isInternal() { return left != nil && right != nil; }
