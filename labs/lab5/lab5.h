@@ -1,7 +1,7 @@
 // Name: Danny Im
 // SID: 861114837
-// Date: 5/5/15
-// Approach:
+// Date: 5/11/15
+// Approach: g++ -std=c++11 -Wall -Werror -pedantic main.cc errors from given code
 
 #ifndef lab5_h
 #define lab5_h
@@ -187,6 +187,112 @@ public:
             outputInorder(n->right);
     }
     
+    Value& operator[](int n)
+    {
+        Node *temp = findNthNode(this->root, n);
+        return temp->value;
+    }
+    
+    Node *findNthNode(Node* n, int &x)
+    {
+        if(n == nil)
+        {
+            return nil;
+        }
+        
+        Node *temp = findNthNode(n->left, x);
+        
+        if(temp!=nil)
+        {
+            return temp;
+        }
+        
+        if(x-- == 0)
+        {
+            return n;
+        }
+        
+        return findNthNode(n->right, x);
+    }
+    
+    BST(): count(0), root(nil)
+    { }
+    
+    void insert(Value X) { root = insert( X, root); }
+    Node* insert( Value X, Node* T )
+    {
+        //The normal binary-tree insertion procedure...
+        if (T == nil)
+        {
+            T = new Node( X ); // the only place T gets updated.
+        }
+        else if (X < T->value)
+        {
+            T->left = insert(X, T->left);
+        }
+        else if (X > T->value)
+        {
+            T->right = insert( X, T->right);
+        }
+        else
+        {
+            T->value = X;
+        }
+        
+        //later, rebalincing code will be installed here
+        return T;
+    }
+    
+    void remove( Value X ){root = remove( X, root); }
+    Node* remove( Value X, Node*& T)
+    {
+        //The normal binary-tree removal procedure...
+        //Weiss's code is faster but way more intricate.
+        if( T!= nil)
+        {
+            if( X > T->value)
+            {
+                T->right = remove( X, T->right);
+            }
+            else if ( X < T->value)
+            {
+                T->left = remove(X, T->left);
+            }
+            else    // X == T->value
+            {
+                if ( T->right != nil)
+                {
+                    Node* x = T->right;
+                    while( x->left != nil) x = x->left;
+                    T->value = x->value;                // successor's value
+                    T->right = remove( T->value, T->right);
+                }
+                else if (T->left != nil)
+                {
+                    Node* x = T->left;
+                    while (x-> right != nil) x = x->right;
+                    T->value = x->value;                // predecessor's value
+                    T->left = remove(T->value, T->left);
+                }
+                else    //*T is external
+                {
+                    delete T;
+                    T = nil;        // the only updating of T
+                }
+            }
+        }
+        
+        // later, rebalancing code will be installed here
+        return T;
+    }
+    
+    void okay() { okay(root);}
+    void okay( Node* T)
+    {
+        //diagnostic code will be installed here
+        return;
+    }
+    
     //---------------------------
     // LAB 5 FUNCTIONS
     //---------------------------
@@ -318,112 +424,6 @@ public:
     }
     
     //---------------------------
-    
-    Value& operator[](int n)
-    {
-        Node *temp = findNthNode(this->root, n);
-        return temp->value;
-    }
-    
-    Node *findNthNode(Node* n, int &x)
-    {
-        if(n == nil)
-        {
-            return nil;
-        }
-        
-        Node *temp = findNthNode(n->left, x);
-        
-        if(temp!=nil)
-        {
-            return temp;
-        }
-        
-        if(x-- == 0)
-        {
-            return n;
-        }
-        
-        return findNthNode(n->right, x);
-    }
-    
-    BST(): count(0), root(nil)
-    { }
-    
-    void insert(Value X) { root = insert( X, root); }
-    Node* insert( Value X, Node* T )
-    {
-        //The normal binary-tree insertion procedure...
-        if (T == nil)
-        {
-            T = new Node( X ); // the only place T gets updated.
-        }
-        else if (X < T->value)
-        {
-            T->left = insert(X, T->left);
-        }
-        else if (X > T->value)
-        {
-            T->right = insert( X, T->right);
-        }
-        else
-        {
-            T->value = X;
-        }
-        
-        //later, rebalincing code will be installed here
-        return T;
-    }
-    
-    void remove( Value X ){root = remove( X, root); }
-    Node* remove( Value X, Node*& T)
-    {
-        //The normal binary-tree removal procedure...
-        //Weiss's code is faster but way more intricate.
-        if( T!= nil)
-        {
-            if( X > T->value)
-            {
-                T->right = remove( X, T->right);
-            }
-            else if ( X < T->value)
-            {
-                T->left = remove(X, T->left);
-            }
-            else    // X == T->value
-            {
-                if ( T->right != nil)
-                {
-                    Node* x = T->right;
-                    while( x->left != nil) x = x->left;
-                    T->value = x->value;                // successor's value
-                    T->right = remove( T->value, T->right);
-                }
-                else if (T->left != nil)
-                {
-                    Node* x = T->left;
-                    while (x-> right != nil) x = x->right;
-                    T->value = x->value;                // predecessor's value
-                    T->left = remove(T->value, T->left);
-                }
-                else    //*T is external
-                {
-                    delete T;
-                    T = nil;        // the only updating of T
-                }
-            }
-        }
-        
-        // later, rebalancing code will be installed here
-        return T;
-    }
-    
-    void okay() { okay(root);}
-    void okay( Node* T)
-    {
-        //diagnostic code will be installed here
-        return;
-    }
 }; // BST
 
 #endif
