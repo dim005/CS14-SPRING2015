@@ -4,11 +4,16 @@
 // Approach:
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 using namespace std;
 
-int main()
+int main(argv[1])
 {
     
+    coprimefill(2,1);
+    coprimefill(3,1);
+    //transversal( m1, n1)
     return 0;
 }
