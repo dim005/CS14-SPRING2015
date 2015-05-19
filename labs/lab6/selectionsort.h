@@ -7,6 +7,7 @@
 #include <utility>
 #include <list>
 #include <vector>
+#include <map>
 
 using namespace std;
 
@@ -26,10 +27,11 @@ void selecitonSort(L& l)
             if(*i > *j)
             {
                 swap(*i, *j);
-                moves+=3;
+                moves++;
             }
         }
     }
+    moves*=3;
     cout << copies << " copies and " << moves << " moves" << endl;
 }
 

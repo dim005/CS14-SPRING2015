@@ -39,7 +39,7 @@ int main(int argc, const char * argv[]) {
     
     
     list<int> listlist;
-    list<int>::iterator it = listlist.begin();
+    list<int>::iterator it;
     
     listlist.push_back(2);
     listlist.push_back(4);
@@ -64,8 +64,53 @@ int main(int argc, const char * argv[]) {
     }
     cout << endl << endl;
     
+    vector <pair<int, int> > pairList;
+    pairList.push_back(make_pair(1,2));
+    pairList.push_back(make_pair(3,-1));
+    pairList.push_back(make_pair(-1,3));
+    pairList.push_back(make_pair(0,0));
+    pairList.push_back(make_pair(2,3));
+    pairList.push_back(make_pair(1,2));
+    pairList.push_back(make_pair(1,-2));
+    pairList.push_back(make_pair(8,10));
     
-    pair<int, int> pairlist;
+    cout << "pre: ";
+    for(int i = 0; i<8; i++)
+    {
+        cout << "(" << pairList[i].first << "," << pairList[i].second << ")" << " ";
+    }
+    cout << endl;
     
+    selecitonSort(pairList);
+    
+    cout << "post: ";
+    for(int i = 0; i<8; i++)
+    {
+        cout << "(" << pairList[i].first << "," << pairList[i].second << ")" << " ";
+    }
+    cout << endl << endl;
+    
+//    vector <pair<int, int> > pairList2;
+//    pairList2.push_back(make_pair(2,2));
+//    pairList2.push_back(make_pair(1,1));
+//    pairList2.push_back(make_pair(1,0));
+//    pairList2.push_back(make_pair(2,3));
+//    
+//    cout << "pre: ";
+//    for(int i = 0; i<4; i++)
+//    {
+//        cout << "(" << pairList2[i].first << "," << pairList2[i].second << ")" << " ";
+//    }
+//    cout << endl;
+//    
+//    selecitonSort(pairList2);
+//    
+//    cout << "post: ";
+//    for(int i = 0; i<4; i++)
+//    {
+//        cout << "(" << pairList2[i].first << "," << pairList2[i].second << ")" << " ";
+//    }
+//    cout << endl << endl;
+
     return 0;
 }
