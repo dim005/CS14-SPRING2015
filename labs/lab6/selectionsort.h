@@ -22,7 +22,7 @@ void selecitonSort(L& l)
     int copies = 0;
     for(auto i = l.begin(); i != l.end() ; i++)
     {
-        for(auto j = i; j != l.end() ; j++)
+        for(auto j = i++; j != l.end() ; j++)
         {
             if(*i > *j)
             {
