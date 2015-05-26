@@ -1,0 +1,13 @@
+Hash Table:
++
+Insertion time grows nearly linear with more data
+-
+Unsorted so long lookup time
+
+self-balancing tree:
++
+Insertion time grows exponentially larger with more data
+-
+Sorted and balanced so short lookup time
+
+Can compare time it takes to remove a certain value such as the front value.
